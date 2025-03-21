@@ -91,16 +91,32 @@ systemctl restart vsftpd
 
 # 1. Installer Apache, MySQL et PHP
 
-apt install apache2 mysql-server php libapache2-mod-php php-mysql -y
+apt update && sudo apt install apache2 mariadb-server php libapache2-mod-php php-mysql -y
 
-Vérifier les services :
+# Vérifier que les services sont bien actifs avec :
 
 systemctl status apache2
-systemctl status mysql
+systemctl status mariadb
 
-# Activer MySQL :
+Si l’un des services n’est pas en cours d’exécution, on peut le démarrer avec :
 
- mysql_secure_installation
+systemctl start apache2 
+systemctl start mariadb
+
+Pour s’assurer que ces services se lancent automatiquement au démarrage du système, on les active avec :
+
+systemctl enable apache2
+systemctl enable mariadb
+
+# Sécuriser l’installation de MariaDB en exécutant la commande suivante :
+
+mysql_secure_installation
+
+Lors de cette configuration, il faut appuyer sur Entrée si un mot de passe root est demandé (par défaut, il est vide), puis répondre Y aux différentes options de sécurité (définition d’un mot de passe root, suppression des utilisateurs anonymes, interdiction des connexions root distantes, suppression de la base de test, etc.).
+
+Après cela, il est possible de vérifier que MariaDB fonctionne correctement en se connectant avec :
+
+mysql -u root -p
 
 # 2. Création d'un Virtual Host
 
