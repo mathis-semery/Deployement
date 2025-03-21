@@ -47,8 +47,8 @@ mv
 
 # 1. Installation de SSH
 
-sudo apt update
-sudo apt install openssh-server -y
+ apt update
+ apt install openssh-server -y
 
 Vérifier l'état du service SSH :
 systemctl status ssh
@@ -67,7 +67,7 @@ Se connecter avec l'utilisateur debian.
 
 # 1. Installation du Serveur FTP (vsftpd)
 
-sudo apt install vsftpd -y
+apt install vsftpd -y
 
 Vérifier et démarrer le service :
 
@@ -77,7 +77,7 @@ systemctl start vsftpd
 # 2. Configuration de vsftpd
 
 Modifier /etc/vsftpd.conf :
-sudo nano /etc/vsftpd.conf
+nano /etc/vsftpd.conf
 
 Modifier ces lignes :
 anonymous_enable=NO
@@ -91,7 +91,7 @@ systemctl restart vsftpd
 
 # 1. Installer Apache, MySQL et PHP
 
-sudo apt install apache2 mysql-server php libapache2-mod-php php-mysql -y
+apt install apache2 mysql-server php libapache2-mod-php php-mysql -y
 
 Vérifier les services :
 
@@ -100,7 +100,7 @@ systemctl status mysql
 
 # Activer MySQL :
 
-sudo mysql_secure_installation
+ mysql_secure_installation
 
 # 2. Création d'un Virtual Host
 
@@ -122,8 +122,8 @@ Ajouter :
 
 # Activer le site et recharger Apache :
 
-sudo a2ensite monsite.local
-sudo systemctl reload apache2
+a2ensite monsite.local
+systemctl reload apache2
 
 # 3. Modifier le Fichier Hosts sur Windows
 
